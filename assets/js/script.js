@@ -1,13 +1,11 @@
-// Seleção dos elementos do DOM
 const cepInput = document.getElementById('cep');
 const ruaInput = document.getElementById('rua');
 const bairroInput = document.getElementById('bairro');
 const cidadeInput = document.getElementById('cidade');
 const ufInput = document.getElementById('uf');
 const message = document.getElementById('message');
-const loading = document.getElementById('loading'); // Novo seletor
+const loading = document.getElementById('loading');
 
-// Função para preencher os campos
 const preencherFormulario = (endereco) => {
     ruaInput.value = endereco.logradouro;
     bairroInput.value = endereco.bairro;
@@ -15,7 +13,6 @@ const preencherFormulario = (endereco) => {
     ufInput.value = endereco.uf;
 }
 
-// Função para limpar o formulário
 const limparFormulario = () => {
     ruaInput.value = '';
     bairroInput.value = '';
@@ -25,12 +22,11 @@ const limparFormulario = () => {
     cepInput.classList.remove('border-red-500');
 }
 
-// Função para alternar o estado de carregamento
 const toggleLoading = (isLoading) => {
     if (isLoading) {
         loading.classList.remove('hidden');
-        cepInput.disabled = true; // Desabilita o input enquanto carrega
-        cepInput.classList.add('bg-gray-100'); // Feedback visual de desabilitado
+        cepInput.disabled = true; 
+        cepInput.classList.add('bg-gray-100'); 
     } else {
         loading.classList.add('hidden');
         cepInput.disabled = false;
@@ -47,8 +43,6 @@ const pesquisarCep = () => {
     }
 
     const url = `https://viacep.com.br/ws/${cep}/json/`;
-
-    // 1. Inicia o Loading
     toggleLoading(true);
 
     fetch(url)
